@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
     private Coach myCoach;
 
-
     @Autowired
     public DemoController(Coach theCoach){
         myCoach = theCoach;
@@ -19,5 +18,10 @@ public class DemoController {
     @GetMapping("/dailyWorkout")
     public String getDailyWorkout(){
         return myCoach.getDailyWorkout();
+    }
+
+    @GetMapping("/hello")
+    public String getHello(){
+        return "hello world";
     }
 }
