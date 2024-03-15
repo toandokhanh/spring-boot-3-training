@@ -1,10 +1,6 @@
 package com.toandokhanh.demorestfullapi.rest;
-
-
 import com.toandokhanh.demorestfullapi.entity.Student;
 import jakarta.annotation.PostConstruct;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -33,14 +29,5 @@ public class StudentRestController {
             throw new StudentNotFoundException("Student id not found -  "+studentId);
         }
         return students.get(studentId);
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException (StudentNotFoundException exc){
-        StudentErrorResponse err = new StudentErrorResponse();
-        err.setStatus(HttpStatus.NOT_FOUND.value());
-        err.setMessage(exc.getMessage());
-        err.setTimeStamp(System.currentTimeMillis());
-        return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
     }
 }
